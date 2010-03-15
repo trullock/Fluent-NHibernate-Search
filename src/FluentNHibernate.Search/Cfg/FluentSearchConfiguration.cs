@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using FluentNHibernate.Search.Cfg.EventListeners;
 using FluentNHibernate.Search.Mapping.Parts;
 using NHibernate.Cfg;
 
@@ -8,6 +6,12 @@ namespace FluentNHibernate.Search.Cfg
 {
 	public class FluentSearchConfiguration : IFluentSearchConfiguration, IHasAnalyzer
 	{
+        public const string SearchCfgDefaultRoot = "hibernate.search.default.";
+        public const string SearchCfgMappingClass = NHibernate.Search.Environment.MappingClass;
+        public const string SearchCfgIndexBase = SearchCfgDefaultRoot + NHibernate.Search.Environment.IndexBase;
+        public const string SearchCfgIndexingStrategy = NHibernate.Search.Environment.IndexingStrategy;
+        public const string SearchCfgDirectoryProvider = SearchCfgDefaultRoot + "directory_provider";
+
 		protected Configuration cfg { get; set; }
 
 		Type IHasAnalyzer.AnalyzerType
