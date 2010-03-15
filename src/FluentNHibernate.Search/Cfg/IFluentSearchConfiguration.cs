@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentNHibernate.Search.Mapping.Parts;
-using NHibernate.Cfg;
+﻿using NHibernate.Cfg;
 
 namespace FluentNHibernate.Search.Cfg
 {
     public interface IFluentSearchConfiguration
     {
-        IDictionary<string, string> Properties { get; }
-        Configuration Configuration { get; }
-        Configuration BuildConfiguration();
+    	Configuration Configuration { get; }
+    	Configuration BuildConfiguration();
     }
 }

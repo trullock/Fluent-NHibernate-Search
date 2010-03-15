@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using FluentNHibernate.Search.Cfg.EventListeners;
 using FluentNHibernate.Search.Mapping.Parts;
 using NHibernate.Cfg;
 
@@ -8,11 +9,6 @@ namespace FluentNHibernate.Search.Cfg
 	public class FluentSearchConfiguration : IFluentSearchConfiguration, IHasAnalyzer
 	{
 		protected Configuration cfg { get; set; }
-
-		Configuration IFluentSearchConfiguration.Configuration
-		{
-			get { return this.cfg; }
-		}
 
 		Type IHasAnalyzer.AnalyzerType
 		{
@@ -24,11 +20,7 @@ namespace FluentNHibernate.Search.Cfg
 			}
 			set { this.cfg.Properties[NHibernate.Search.Environment.AnalyzerClass] = value.AssemblyQualifiedName; }
 		}
-
-		IDictionary<string, string> IFluentSearchConfiguration.Properties
-		{
-			get { return this.cfg.Properties; }
-		}
+		Configuration IFluentSearchConfiguration.Configuration { get { return this.cfg; } }
 
 		public FluentSearchConfiguration() : this(new Configuration())
 		{
@@ -39,11 +31,6 @@ namespace FluentNHibernate.Search.Cfg
 			this.cfg = cfg;
 		}
 
-		public IFluentSearchConfiguration Listeners(Func<ListenersPart, ListenersPart> listenerConfig)
-		{
-			listenerConfig(new ListenersPart(this));
-			return this;
-		}
 
 		/// <summary>
 		/// Exposes the underlying NHibernate.Cfg.Configuration for custom modifications

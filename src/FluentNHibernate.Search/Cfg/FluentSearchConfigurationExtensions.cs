@@ -1,4 +1,5 @@
 using System;
+using FluentNHibernate.Search.Cfg.EventListeners;
 using FluentNHibernate.Search.Exceptions;
 using FluentNHibernate.Search.Mapping.Parts;
 using Lucene.Net.Analysis;
@@ -20,7 +21,7 @@ namespace FluentNHibernate.Search.Cfg
 			if (string.IsNullOrEmpty(path))
 				throw new ConfigurationException("IndexBase cannot be null or empty");
 
-			(self as IFluentSearchConfiguration).Properties.Add("hibernate.search.default." + NHibernate.Search.Environment.IndexBase, path);
+			(self as IFluentSearchConfiguration).Configuration.Properties.Add("hibernate.search.default." + NHibernate.Search.Environment.IndexBase, path);
 
 			return self;
 		}
@@ -46,7 +47,7 @@ namespace FluentNHibernate.Search.Cfg
 			if(!typeof(ISearchMapping).IsAssignableFrom(mappingClassType))
 				throw new ArgumentException("Must implement ISearchMapping", "mappingClassType");
 
-            (self as IFluentSearchConfiguration).Properties.Add(NHibernate.Search.Environment.MappingClass, mappingClassType.AssemblyQualifiedName);
+			(self as IFluentSearchConfiguration).Configuration.Properties.Add(NHibernate.Search.Environment.MappingClass, mappingClassType.AssemblyQualifiedName);
 			return self;
 		}
 
@@ -66,5 +67,11 @@ namespace FluentNHibernate.Search.Cfg
         {
             return DefaultAnalyzer(self).Custom<TAnalyzer>();
         }
+
+		public static IFluentSearchConfiguration Listeners(this FluentSearchConfiguration self, IListenerConfiguration config)
+		{
+			config.Apply((self as IFluentSearchConfiguration).Configuration);
+			return self;
+		}
 	}
 }

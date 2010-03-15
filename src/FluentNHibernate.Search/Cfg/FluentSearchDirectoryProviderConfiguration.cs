@@ -13,7 +13,7 @@ namespace FluentNHibernate.Search.Cfg
 
         public FluentSearchConfiguration Custom<T>() where T : IDirectoryProvider
         {
-            (cfg as IFluentSearchConfiguration).Properties.Add("hibernate.search.default.directory_provider", typeof(T).AssemblyQualifiedName);
+			(cfg as IFluentSearchConfiguration).Configuration.Properties.Add("hibernate.search.default.directory_provider", typeof(T).AssemblyQualifiedName);
             return cfg;
         }
 

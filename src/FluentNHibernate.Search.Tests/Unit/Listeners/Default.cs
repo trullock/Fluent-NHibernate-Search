@@ -1,4 +1,3 @@
-using System;
 using FluentNHibernate.Search.Cfg;
 using FluentNHibernate.Search.Tests.Extensions;
 using NHibernate.Cfg;
@@ -13,7 +12,7 @@ namespace FluentNHibernate.Search.Tests.Unit.Listeners
 		protected override void When()
 		{
 			this.configuration = FluentSearch.Configure()
-				.Listeners(c => c.Default())
+				.Listeners(ListenerConfiguration.Default)
 				.BuildConfiguration();
 		}
 

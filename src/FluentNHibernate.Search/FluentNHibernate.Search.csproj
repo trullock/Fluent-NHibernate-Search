@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cfg\EventListeners\DefaultListenerConfiguration.cs" />
     <Compile Include="Cfg\FluentSearch.cs" />
     <Compile Include="Cfg\FluentSearchConfiguration.cs" />
     <Compile Include="Cfg\FluentSearchConfigurationExtensions.cs" />
@@ -70,7 +71,11 @@
     <Compile Include="Cfg\FluentSearchIndexingStrategyConfiguration.cs" />
     <Compile Include="Cfg\FluentSearchIndexingStrategyConfigurationExtensions.cs" />
     <Compile Include="Cfg\IFluentSearchConfiguration.cs" />
-    <Compile Include="Cfg\ListenersPart.cs" />
+    <Compile Include="Cfg\EventListeners\IListenerConfiguration.cs" />
+    <Compile Include="Cfg\EventListeners\CustomListenerConfiguration.cs" />
+    <Compile Include="Cfg\EventListeners\CustomListenerConfigurationExtensions.cs" />
+    <Compile Include="Cfg\EventListeners\ListenerPart.cs" />
+    <Compile Include="Cfg\ListenerConfiguration.cs" />
     <Compile Include="Exceptions\ConfigurationException.cs" />
     <Compile Include="Exceptions\ContainedInMappingException.cs" />
     <Compile Include="Exceptions\DocumentBridgeMappingException.cs" />
