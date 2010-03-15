@@ -18,7 +18,7 @@ namespace FluentNHibernate.Search.Cfg
         /// <returns></returns>
         public FluentSearchConfiguration Custom(string name)
         {
-            (cfg as IFluentSearchConfiguration).Properties.Add(Environment.IndexingStrategy, name);
+            (cfg as IFluentSearchConfiguration).Properties.Add(FluentSearchConfiguration.SearchCfgIndexingStrategy, name);
             return cfg;
         }
 

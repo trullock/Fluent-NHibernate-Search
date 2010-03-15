@@ -20,7 +20,7 @@ namespace FluentNHibernate.Search.Cfg
 			if (string.IsNullOrEmpty(path))
 				throw new ConfigurationException("IndexBase cannot be null or empty");
 
-			(self as IFluentSearchConfiguration).Properties.Add("hibernate.search.default." + NHibernate.Search.Environment.IndexBase, path);
+            (self as IFluentSearchConfiguration).Properties.Add(FluentSearchConfiguration.SearchCfgIndexBase, path);
 
 			return self;
 		}
@@ -46,7 +46,7 @@ namespace FluentNHibernate.Search.Cfg
 			if(!typeof(ISearchMapping).IsAssignableFrom(mappingClassType))
 				throw new ArgumentException("Must implement ISearchMapping", "mappingClassType");
 
-            (self as IFluentSearchConfiguration).Properties.Add(NHibernate.Search.Environment.MappingClass, mappingClassType.AssemblyQualifiedName);
+            (self as IFluentSearchConfiguration).Properties.Add(FluentSearchConfiguration.SearchCfgMappingClass, mappingClassType.AssemblyQualifiedName);
 			return self;
 		}
 
