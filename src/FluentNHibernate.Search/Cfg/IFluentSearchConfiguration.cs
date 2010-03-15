@@ -8,6 +8,7 @@ namespace FluentNHibernate.Search.Cfg
     public interface IFluentSearchConfiguration
     {
         IDictionary<string, string> Properties { get; }
+        Configuration Configuration { get; }
         Configuration BuildConfiguration();
     }
 }

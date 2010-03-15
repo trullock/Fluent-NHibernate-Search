@@ -5,49 +5,60 @@ using NHibernate.Cfg;
 
 namespace FluentNHibernate.Search.Cfg
 {
-    public class FluentSearchConfiguration : IFluentSearchConfiguration, IHasAnalyzer
-    {
-        protected Configuration cfg { get; set; }
+	public class FluentSearchConfiguration : IFluentSearchConfiguration, IHasAnalyzer
+	{
+		protected Configuration cfg { get; set; }
 
-        Type IHasAnalyzer.AnalyzerType
-        {
-            get
-            {
-                if (!cfg.Properties.ContainsKey(NHibernate.Search.Environment.AnalyzerClass))
-                    return null;
-                return Type.GetType(cfg.Properties[NHibernate.Search.Environment.AnalyzerClass]);
-            }
-            set { this.cfg.Properties[NHibernate.Search.Environment.AnalyzerClass] = value.AssemblyQualifiedName; }
-        }
+		Configuration IFluentSearchConfiguration.Configuration
+		{
+			get { return this.cfg; }
+		}
 
-        IDictionary<string, string> IFluentSearchConfiguration.Properties
-        {
-            get { return this.cfg.Properties; }
-        }
-		
-        public FluentSearchConfiguration() : this(new Configuration())
-        {
-        }
+		Type IHasAnalyzer.AnalyzerType
+		{
+			get
+			{
+				if (!cfg.Properties.ContainsKey(NHibernate.Search.Environment.AnalyzerClass))
+					return null;
+				return Type.GetType(cfg.Properties[NHibernate.Search.Environment.AnalyzerClass]);
+			}
+			set { this.cfg.Properties[NHibernate.Search.Environment.AnalyzerClass] = value.AssemblyQualifiedName; }
+		}
 
-        public FluentSearchConfiguration(Configuration cfg)
-        {
-            this.cfg = cfg;
-        }
+		IDictionary<string, string> IFluentSearchConfiguration.Properties
+		{
+			get { return this.cfg.Properties; }
+		}
 
-        /// <summary>
-        /// Exposes the underlying NHibernate.Cfg.Configuration for custom modifications
-        /// </summary>
-        /// <param name="alteration"></param>
-        /// <returns></returns>
-        public IFluentSearchConfiguration ExposeConfiguration(Action<Configuration> alteration)
-        {
-            alteration(cfg);
-            return this;
-        }
+		public FluentSearchConfiguration() : this(new Configuration())
+		{
+		}
 
-        public Configuration BuildConfiguration()
-        {
-        	return cfg;
-        }
-    }
+		public FluentSearchConfiguration(Configuration cfg)
+		{
+			this.cfg = cfg;
+		}
+
+		public IFluentSearchConfiguration Listeners(Func<ListenersPart, ListenersPart> listenerConfig)
+		{
+			listenerConfig(new ListenersPart(this));
+			return this;
+		}
+
+		/// <summary>
+		/// Exposes the underlying NHibernate.Cfg.Configuration for custom modifications
+		/// </summary>
+		/// <param name="alteration"></param>
+		/// <returns></returns>
+		public IFluentSearchConfiguration ExposeConfiguration(Action<Configuration> alteration)
+		{
+			alteration(cfg);
+			return this;
+		}
+
+		public Configuration BuildConfiguration()
+		{
+			return cfg;
+		}
+	}
 }

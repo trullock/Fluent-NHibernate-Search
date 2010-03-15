@@ -70,6 +70,7 @@
     <Compile Include="Cfg\FluentSearchIndexingStrategyConfiguration.cs" />
     <Compile Include="Cfg\FluentSearchIndexingStrategyConfigurationExtensions.cs" />
     <Compile Include="Cfg\IFluentSearchConfiguration.cs" />
+    <Compile Include="Cfg\ListenersPart.cs" />
     <Compile Include="Exceptions\ConfigurationException.cs" />
     <Compile Include="Exceptions\ContainedInMappingException.cs" />
     <Compile Include="Exceptions\DocumentBridgeMappingException.cs" />
