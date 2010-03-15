@@ -101,6 +101,7 @@
     <Compile Include="Mappings\SearchMappingImpl.cs" />
     <Compile Include="Mappings\TestDocumentMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\Field\CustomName.cs" />
     <Compile Include="Unit\Field\NoOptions.cs" />
     <Compile Include="Unit\SimpleTests.cs" />
     <Compile Include="Specification.cs" />
