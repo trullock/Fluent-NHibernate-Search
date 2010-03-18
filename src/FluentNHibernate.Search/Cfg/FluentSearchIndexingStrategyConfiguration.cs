@@ -9,14 +9,9 @@ namespace FluentNHibernate.Search.Cfg
             this.cfg = cfg;
         }
 
-        /// <summary>
-        /// Sets the IndexingStrategy property to the given string
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public FluentSearchConfiguration Custom(string name)
+        private FluentSearchConfiguration setStrategy(string name)
         {
-            (cfg as IFluentSearchConfiguration).Configuration.Properties.Add(FluentSearchConfiguration.SearchCfgIndexingStrategy, name);
+			(cfg as IFluentSearchConfiguration).Configuration.Properties.Add(NHibernate.Search.Environment.IndexingStrategy, name);
             return cfg;
         }
 
@@ -26,7 +21,7 @@ namespace FluentNHibernate.Search.Cfg
         /// <returns></returns>
         public FluentSearchConfiguration Manual()
         {
-            return Custom("manual");
+            return setStrategy("manual");
         }
 
         /// <summary>
@@ -35,7 +30,7 @@ namespace FluentNHibernate.Search.Cfg
         /// <returns></returns>
         public FluentSearchConfiguration Event()
         {
-            return Custom("event");
+            return setStrategy("event");
         }
     }
 }

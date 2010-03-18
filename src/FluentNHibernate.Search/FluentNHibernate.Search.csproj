@@ -63,17 +63,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cfg\EventListeners\DefaultListenerConfiguration.cs" />
+    <Compile Include="Cfg\EventListeners\Extensions\PostInsertExtensions.cs" />
+    <Compile Include="Cfg\EventListeners\Extensions\PostUpdateExtensions.cs" />
+    <Compile Include="Cfg\EventListeners\Extensions\PostDeleteExtensions.cs" />
     <Compile Include="Cfg\FluentSearch.cs" />
     <Compile Include="Cfg\FluentSearchConfiguration.cs" />
-    <Compile Include="Cfg\FluentSearchConfigurationExtensions.cs" />
     <Compile Include="Cfg\FluentSearchDirectoryProviderConfiguration.cs" />
-    <Compile Include="Cfg\FluentSearchDirectoryProviderConfigurationExtensions.cs" />
     <Compile Include="Cfg\FluentSearchIndexingStrategyConfiguration.cs" />
-    <Compile Include="Cfg\FluentSearchIndexingStrategyConfigurationExtensions.cs" />
     <Compile Include="Cfg\IFluentSearchConfiguration.cs" />
     <Compile Include="Cfg\EventListeners\IListenerConfiguration.cs" />
     <Compile Include="Cfg\EventListeners\CustomListenerConfiguration.cs" />
-    <Compile Include="Cfg\EventListeners\CustomListenerConfigurationExtensions.cs" />
     <Compile Include="Cfg\EventListeners\ListenerPart.cs" />
     <Compile Include="Cfg\ListenerConfiguration.cs" />
     <Compile Include="Exceptions\ConfigurationException.cs" />

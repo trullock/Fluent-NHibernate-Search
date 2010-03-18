@@ -1,7 +1,6 @@
 using System.Data;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using FluentNHibernate.Search;
 using FluentNHibernate.Search.Cfg;
 using FNHS.Samples.Mappings;
 using FNHS.Samples.SearchMappings;
@@ -9,7 +8,6 @@ using NHibernate;
 using NHibernate.ByteCode.Castle;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
-using NHibernate.Driver;
 using NHibernate.Event;
 using NHibernate.Search.Event;
 using NHibernate.Tool.hbm2ddl;
@@ -34,6 +32,7 @@ namespace FNHS.Samples
                 .DefaultAnalyzer().Standard()
                 .DirectoryProvider().RAMDirectory()
                 .IndexingStrategy().Event()
+				.Listeners(ListenerConfiguration.Default)
                 .MappingClass<SearchMap>()
                 .BuildConfiguration();
 

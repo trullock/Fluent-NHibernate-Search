@@ -1,6 +1,4 @@
-using System;
 using NHibernate.Event;
-using NHibernate.Search.Event;
 
 namespace FluentNHibernate.Search.Cfg.EventListeners
 {

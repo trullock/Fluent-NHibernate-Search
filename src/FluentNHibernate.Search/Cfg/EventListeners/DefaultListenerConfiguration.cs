@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using NHibernate.Cfg;
 using NHibernate.Event;
 using NHibernate.Search.Event;
@@ -8,9 +6,8 @@ namespace FluentNHibernate.Search.Cfg.EventListeners
 {
 	public class DefaultListenerConfiguration : IListenerConfiguration
 	{
-		public IList<ListenerPart> Parts
+		internal DefaultListenerConfiguration()
 		{
-			get { throw new NotSupportedException(); }
 		}
 
 		public void Apply(Configuration cfg)
