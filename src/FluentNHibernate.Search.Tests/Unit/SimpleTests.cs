@@ -10,7 +10,7 @@ namespace FluentNHibernate.Search.Tests.Unit
         [Test]
         public void Mapping_Should_Initialize()
         {
-            var builder = new Mappings.SearchMappingImpl();
+            var builder = new SearchMappingImpl();
             builder.Build(null);
         }
     }

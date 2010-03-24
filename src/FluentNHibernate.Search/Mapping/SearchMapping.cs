@@ -43,7 +43,10 @@ namespace FluentNHibernate.Search.Mapping
 
             var types = this.assemblies
 				.SelectMany(a => a.GetTypes())
-				.Where(t => !t.IsGenericType && !t.IsAbstract && mappingProviderType.IsAssignableFrom(t));
+				.Where(t => 
+					!t.IsGenericType && 
+					!t.IsAbstract && 
+					mappingProviderType.IsAssignableFrom(t));
 
 			foreach (var type in types)
 				yield return Activator.CreateInstance(type) as IDocumentMappingProvider;

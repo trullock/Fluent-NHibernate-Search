@@ -23,20 +23,20 @@ namespace FluentNHibernate.Search.Mapping
 		Type IHasAnalyzer.AnalyzerType { get; set; }
 
 		private DocumentIdMappingPart idMappingPart;
-		private readonly IList<FieldMappingPart> fieldParts;
-    	private readonly IList<EmbeddedPart<T>> embeddedParts;
-		private readonly IList<ContainedInMapping> containedInParts;
-    	private readonly IList<DocumentBridgePart<T>> documentBridgeParts;
+		private readonly IList<IFieldMappingProvider> fieldParts;
+		private readonly IList<IEmbeddedMappingProvider> embeddedParts;
+		private readonly IList<IContainedInMappingProvider> containedInParts;
+    	private readonly IList<IDocumentBridgeMappingProvider> documentBridgeParts;
 
     	private int level;
     	private readonly int maxLevel;
 
         protected DocumentMap()
         {
-            this.fieldParts = new List<FieldMappingPart>();
-            this.embeddedParts = new List<EmbeddedPart<T>>();
-			this.containedInParts = new List<ContainedInMapping>();
-            this.documentBridgeParts = new List<DocumentBridgePart<T>>();
+			this.fieldParts = new List<IFieldMappingProvider>();
+			this.embeddedParts = new List<IEmbeddedMappingProvider>();
+			this.containedInParts = new List<IContainedInMappingProvider>();
+			this.documentBridgeParts = new List<IDocumentBridgeMappingProvider>();
 
             this.maxLevel = int.MaxValue;
         	this.Name(typeof (T).Name);
@@ -55,17 +55,17 @@ namespace FluentNHibernate.Search.Mapping
             return this.idMappingPart;
         }
 
-        /// <summary>
-        /// Map a Property as a Lucene.NET Field.
-        /// </summary>
-        /// <param name="property"></param>
-        /// <returns></returns>
-        protected FieldMappingPart Map(Expression<Func<T, object>> property)
-        {
-            var field = new FieldMappingPart(property.ToPropertyInfo());
-            this.fieldParts.Add(field);
-            return field;
-        }
+		/// <summary>
+		/// Map a Property as a Lucene.NET Field.
+		/// </summary>
+		/// <param name="property"></param>
+		/// <returns></returns>
+		protected FieldMappingPart Map(Expression<Func<T, object>> property)
+		{
+			var field = new FieldMappingPart(property.ToPropertyInfo());
+			this.fieldParts.Add(field);
+			return field;
+		}
 
         /// <summary>
         /// Defines the Lucene.NET Index Name.
@@ -106,9 +106,9 @@ namespace FluentNHibernate.Search.Mapping
         }
 
         [Obsolete("Not currently guaranteed to work")]
-        protected EmbeddedPart<T> Embedded(Expression<Func<T, object>> property)
+		protected EmbeddedPart<TEmbedded> Embedded<TEmbedded>(Expression<Func<T, TEmbedded>> property)
         {
-            var part = new EmbeddedPart<T>(property);
+			var part = new EmbeddedPart<TEmbedded>(property.ToPropertyInfo());
             this.embeddedParts.Add(part);
 
             return part;
@@ -120,7 +120,7 @@ namespace FluentNHibernate.Search.Mapping
 			var propertyInfo = property.ToPropertyInfo();
 			var getter = new BasicPropertyAccessor.BasicGetter(typeof(T), propertyInfo, propertyInfo.Name);
 			var mapping = new ContainedInMapping(getter);
-			this.containedInParts.Add(mapping);
+			//this.containedInParts.Add(mapping);
 
             return this;
         }
@@ -191,10 +191,11 @@ namespace FluentNHibernate.Search.Mapping
         		doc.ClassBridges.Add(part.GetMapping());
 
         	foreach (var part in this.embeddedParts)
-        		BuildEmbedded(doc, part, context);
+//        		BuildEmbedded(doc, part.GetMapping(), context);
+				doc.Embedded.Add(part.GetMapping());
 
-        	foreach (var part in this.containedInParts)
-        		doc.ContainedIn.Add(part);
+        	//foreach (var part in this.containedInParts)
+        	//	doc.ContainedIn.Add(part);
         }
 
 

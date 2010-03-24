@@ -7,11 +7,13 @@ namespace FluentNHibernate.Search.Tests.Domain
     {
         public Author()
         {
-            Books = new List<Book>();
+            this.Books = new List<Book>();
+			this.Address = new Address();
         }
 
         public Guid AuthorId { get; set; }
         public string Name { get; set; }
+    	public Address Address { get; set; }
         public IList<Book> Books { get; set; }
     }
 }

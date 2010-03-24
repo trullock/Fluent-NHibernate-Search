@@ -88,6 +88,7 @@
     <Compile Include="Mapping\Parts\BridgePart.cs" />
     <Compile Include="Mapping\Parts\DocumentBridgePart.cs" />
     <Compile Include="Mapping\Parts\DocumentIdMappingPart.cs" />
+    <Compile Include="Mapping\Parts\EmbeddedMappingPart.cs" />
     <Compile Include="Mapping\Parts\EmbeddedPart.cs" />
     <Compile Include="Mapping\Parts\FieldMappingPart.cs" />
     <Compile Include="Mapping\Parts\FluentMappingPart.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="Mapping\Providers\IDocumentMappingProvider.cs" />
     <Compile Include="Mapping\Parts\DocumentIdBridgePart.cs" />
     <Compile Include="Mapping\DocumentMap.cs" />
+    <Compile Include="Mapping\Providers\IEmbeddedMappingPartProvider.cs" />
     <Compile Include="Mapping\Providers\IEmbeddedMappingProvider.cs" />
     <Compile Include="Mapping\Providers\IFieldMappingProvider.cs" />
     <Compile Include="Mapping\Providers\IMappingProvider.cs" />

@@ -5,8 +5,6 @@ namespace FluentNHibernate.Search.Tests.Mappings
 {
     public class SearchMappingImpl : SearchMapping
     {
-        #region Overrides of SearchMappingImpl
-
         protected override void Configure()
         {
             AddAssembly(Assembly.GetExecutingAssembly());
@@ -14,7 +12,5 @@ namespace FluentNHibernate.Search.Tests.Mappings
 
             AssertIsValid();
         }
-
-        #endregion
     }
 }
