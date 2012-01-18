@@ -1,4 +1,3 @@
-using System;
 using System.Data;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -6,7 +5,6 @@ using FluentNHibernate.Search.Cfg;
 using FluentNHibernate.Search.Mapping;
 using NHibernate;
 using NHibernate.Cfg;
-using NHibernate.Dialect;
 using NHibernate.Event;
 using NHibernate.Search;
 using NHibernate.Search.Event;
@@ -52,8 +50,7 @@ namespace FluentNHibernate.Search.Tests.Integration
 			return searchConfig(FluentSearch.Configure(
 				Fluently
 					.Configure()
-					.Database(SQLiteConfiguration.Standard.InMemory()
-					.Dialect<SQLiteDialect>())
+					.Database(SQLiteConfiguration.Standard.InMemory())
 					.Mappings(fnhMappings)
 					.ExposeConfiguration(cfg =>
 					{
