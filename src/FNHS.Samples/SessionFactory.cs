@@ -6,7 +6,6 @@ using FNHS.Samples.Mappings;
 using FNHS.Samples.SearchMappings;
 using NHibernate;
 using NHibernate.Cfg;
-using NHibernate.Dialect;
 using NHibernate.Event;
 using NHibernate.Search.Event;
 using NHibernate.Tool.hbm2ddl;
@@ -15,7 +14,6 @@ namespace FNHS.Samples
 {
 	public class SessionFactory
 	{
-		private const string ConnectionString = "Data Source=:memory:;Version=3;New=True;";
 		private static ISessionFactory _sessionFactory;
 		private static Configuration _cfg;
 
@@ -38,8 +36,7 @@ namespace FNHS.Samples
 			// FluentNHibernate Configuration
 			Configuration fnhcfg = Fluently
 				.Configure(fnhscfg)
-				.Database(SQLiteConfiguration.Standard.InMemory()
-				          	.Dialect<SQLiteDialect>())
+				.Database(SQLiteConfiguration.Standard.InMemory())
 				.Mappings(m => m.FluentMappings.AddFromAssemblyOf<AuthorMap>())
 				.ExposeConfiguration(cfg =>
 				{

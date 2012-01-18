@@ -7,10 +7,12 @@ namespace FNHS.Samples
 {
     class Program
     {
-        private static readonly SessionFactory SessionFactory = new SessionFactory();
+        private static SessionFactory SessionFactory;
 
 		static void Main(string[] args)
-        {
+		{
+			SessionFactory = new SessionFactory();
+
             using (ISession session = SessionFactory.CreateSession())
             {
                 using (ITransaction tx = session.BeginTransaction())
@@ -35,6 +37,8 @@ namespace FNHS.Samples
 
                 Console.WriteLine("Authors : " + authors.Count);
                 Console.WriteLine("Books : " + books.Count);
+            	
+				Console.ReadLine();
             }
         }
     }
