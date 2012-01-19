@@ -14,8 +14,8 @@ namespace FNHS.Samples.Domain
             BookId = Guid.NewGuid();
         }
 
-        public virtual Guid BookId { get; private set; }
-        public virtual Author Author { get; private set; }
+        public virtual Guid BookId { get; protected set; }
+        public virtual Author Author { get; protected set; }
         public virtual string Title { get; set; }
         public virtual string Description { get; set; }
     }

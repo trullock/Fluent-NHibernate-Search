@@ -12,8 +12,8 @@ namespace FNHS.Samples.Domain
             Books = new List<Book>();
         }
 
-        public virtual Guid AuthorId { get; private set; }
+        public virtual Guid AuthorId { get; protected set; }
         public virtual string Name { get; set; }
-        public virtual IList<Book> Books { get; private set; }
+        public virtual IList<Book> Books { get; protected set; }
     }
 }
