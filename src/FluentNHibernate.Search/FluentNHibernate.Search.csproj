@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FluentNHibernate.Search</RootNamespace>
     <AssemblyName>FluentNHibernate.Search</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -40,12 +40,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=1.0.0.629, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Lucene.Net, Version=2.9.1.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Lucene.Net">
       <HintPath>..\..\lib\Lucene.Net.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
@@ -83,7 +78,6 @@
     <Compile Include="Exceptions\EmbeddedMappingException.cs" />
     <Compile Include="Exceptions\FieldMappingException.cs" />
     <Compile Include="Exceptions\MappingException.cs" />
-    <Compile Include="FluentNHibernateExtensions.cs" />
     <Compile Include="Mapping\Parts\AnalyzerPart.cs" />
     <Compile Include="Mapping\Parts\BridgePart.cs" />
     <Compile Include="Mapping\Parts\DocumentBridgePart.cs" />
