@@ -19,6 +19,7 @@ namespace FluentNHibernate.Search.Tests.Integration
         protected override void fnhMappings(MappingConfiguration mapping)
         {
             mapping.FluentMappings.Add<TestDocumentMap>();
+						mapping.FluentMappings.Add<TagDocumentMap>();
         }
 
         protected override Configuration searchConfig(FluentSearchConfiguration config)

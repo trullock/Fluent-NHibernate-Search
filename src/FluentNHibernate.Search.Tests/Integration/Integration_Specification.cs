@@ -13,7 +13,6 @@ using NUnit.Framework;
 
 namespace FluentNHibernate.Search.Tests.Integration
 {
-	[TestFixture]
 	public abstract class Integration_Specification<TDocument> : DocumentMap<TDocument>
 	{
 		protected ISession session;

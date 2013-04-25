@@ -24,9 +24,14 @@ namespace FluentNHibernate.Search.Mapping.Parts
 			// set the default getter
 			this.Getter = new BasicPropertyAccessor.BasicGetter(propertyInfo.DeclaringType, propertyInfo, propertyInfo.Name);
 
-			// set the default bridge
-			var bridge = BridgeFactory.GuessType(propertyInfo.Name, propertyInfo.PropertyType, null, null);
-			(this as IHasBridge).FieldBridge = bridge;
+			try
+			{
+				// set the default bridge
+				var bridge = BridgeFactory.GuessType(propertyInfo.Name, propertyInfo.PropertyType, null, null);
+				(this as IHasBridge).FieldBridge = bridge;
+			}
+			catch
+			{ }
 		}
 	}
 }

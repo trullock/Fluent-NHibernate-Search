@@ -2,7 +2,6 @@ using NUnit.Framework;
 
 namespace FluentNHibernate.Search.Tests
 {
-	[TestFixture]
 	public abstract class Specification
 	{
 		[SetUp]

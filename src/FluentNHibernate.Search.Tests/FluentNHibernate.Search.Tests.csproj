@@ -88,6 +88,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\Tag.cs" />
+    <Compile Include="Integration\Bridge\CustomBridge.cs" />
+    <Compile Include="Mappings\TagBridge.cs" />
+    <Compile Include="Mappings\TagDocumentMap.cs" />
     <Compile Include="Unit\DocumentId\CustomName.cs" />
     <Compile Include="Unit\DocumentId\NoOptions.cs" />
     <Compile Include="Domain\Author.cs" />
